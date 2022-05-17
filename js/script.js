@@ -134,6 +134,71 @@
 
 // checkUserData(user, userArray);
 
+
+
+// Дз через цикл
+
+// const usersArray = [
+//   {
+//     userEmail: "ivan@gmail.com",
+//     surname: "Ivanov",
+//     name: "Ivan",
+//   },
+//   {
+//     userEmail: "oleg@gmail.com",
+//     surname: "Ivanov",
+//     name: "Oleg",
+//   },
+//   {
+//     userEmail: "katya@gmail.com",
+//     surname: "Ivanova",
+//     name: "Katya",
+//   },
+// ];
+
+// const newarray = [];
+// let counter = 0;
+
+// const countUsers = prompt("Введите количество пользователей, которых вы хотите проверить")
+
+// for (let k = 0; k < countUsers; k++){
+// let userEmail = prompt("Введите свою почту");
+// let userName = prompt("Введите свое имя");
+// let userSurname = prompt("Введите свою фамилию");
+
+// let user = {
+// email: userEmail,
+// name: userName,
+// surname: userSurname,
+// }
+
+
+// for (let i = 0; i < usersArray.length; i++) {
+//     if (
+//       usersArray[i].userEmail === user.email &&
+//       usersArray[i].name === user.name &&
+//       usersArray[i].surname === user.surname
+//     ){
+//         counter ++;
+//         newarray.push(usersArray[i].userEmail);
+//     }}
+// }
+// if (counter > 0){
+//     alert(`Количество совпадений: ${counter}`);
+//     alert(`Почта пользователей, прошедших проверку: ${newarray}`)
+// }else{
+//     alert("Пользователи не найдены")
+// }
+
+
+
+
+// ДЗ через функцию
+
+const countUsers = Number(
+  prompt("Введите количество пользователей, которых вы хотите проверить")
+);
+
 const usersArray = [
   {
     userEmail: "ivan@gmail.com",
@@ -152,36 +217,47 @@ const usersArray = [
   },
 ];
 
-const newarray = [];
+let validUsers = "";
+let validArray = [];
 let counter = 0;
 
-const countUsers = prompt("Введите количество пользователей, которых вы хотите проверить")
-
-for (let k = 0; k < countUsers; k++){
-let userEmail = prompt("Введите свою почту");
-let userName = prompt("Введите свое имя");
-let userSurname = prompt("Введите свою фамилию");
-
-let user = {
-email: userEmail,
-name: userName,
-surname: userSurname,
+for (let i = 0; i < countUsers; i++) {
+  validArray.push(createUser(usersArray));
 }
 
+if (counter > 0) {
+  validUsers = `Количество совпадений: ${
+    counter
+  }  Данные пользователей: ${validArray.join(" ")}`;
 
-for (let i = 0; i < usersArray.length; i++) {
+  alert(validUsers);
+} else {
+  alert("Ничего не найдено");
+}
+
+function createUser(usersArray) {
+  const userEmail = prompt("Введите почту");
+  const userName = prompt("Введите имя");
+  const userSurname = prompt("Введите фамилию ");
+
+  const userObj = {
+    name: userName,
+    surname: userSurname,
+    userEmail: userEmail,
+  };
+
+  const newArray = [];
+
+  for (let i = 0; i < usersArray.length; i++) {
     if (
-      usersArray[i].userEmail === user.email &&
-      usersArray[i].name === user.name &&
-      usersArray[i].surname === user.surname
-    ){
-        counter ++;
-        newarray.push(usersArray[i].userEmail);
-    }}
-}
-if (counter > 0){
-    alert(`Количество совпадений: ${counter}`);
-    alert(`Почта пользователей, прошедших проверку: ${newarray}`)
-}else{
-    alert("Пользователи не найдены")
+      usersArray[i].surname === userObj.surname &&
+      usersArray[i].userEmail === userObj.userEmail &&
+      usersArray[i].name === userObj.name
+    ) {
+      counter++;
+      newArray.push(userObj.userEmail);
+    }
+  }
+
+  return newArray[0];
 }

@@ -28,7 +28,7 @@
 const nums = [1, 2, 3, 4];
 const nums2 = [5, 6, 7];
 
-const result = [...nums, ...nums2, 9, 10];
+const result = [...nums, ...nums2, 9, 10];  
 
 // for (el of result) {
 //     console.log(el);
@@ -47,4 +47,4 @@ console.log(filteredNums)
 
 " 3 1 4 5 8 2" -> "8 1"
 
-// подсказка к дз: метод МЭС/ИЗНАН 
+// метод МЭС/ИЗНАН 
